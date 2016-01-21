@@ -549,14 +549,14 @@ git clone https://github.com/anthill/training.git
 
 					<section>
 						<h1>HTML</h1>
-						<h3>structurer le contenu<h3>
+                        <h3>structurer le contenu</h3>
 					</section>
 
 					<section>
 						<h2>balise</h2>
 						<p>Les elements d'une page sont représenté par une balise :</p>
 						<pre><code class="html" data-trim contenteditable>
-<element attribut="valeur" ...>contenu</element>				
+&lt;element attribut="valeur" ...>contenu&lt;/element>				
 						</code></pre>
 						<p>Certains éléments sont solitaires d'autres s'associent.</p>
 					</section>
@@ -713,7 +713,6 @@ git clone https://github.com/anthill/training.git
 						    </tr>
 						  </tbody>
 						</table>
-						</code></pre>
 					</section>
 
 					<section>
@@ -787,7 +786,7 @@ git clone https://github.com/anthill/training.git
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong"><code>strong</code></a></li>
 							<li>
 								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i"><code>i</code></a>,
-								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b"><code>b</code></a></li>
+								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b"><code>b</code></a>
 							</li>
 							<li>
 								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small"><code>small</code></a>,
@@ -1090,7 +1089,7 @@ if (nom == "des chiots") {
 						</code></pre>
 						<p>les opérateurs logiques :</p>
 						<pre><code class="hsjs" data-trim contenteditable>
-if (nom === "toto" && prenom === "alex")
+if (nom === "toto" &amp;&amp; prenom === "alex")
 if (nom === "toto" || prenom === "alex")
 var permis = (age > 18) ? "oui" : "non";
 						</code></pre>
@@ -1448,8 +1447,8 @@ projet_Node/
 		grunt-devserver/
 	package.json			
 						</code></pre>
-						<p>On peut lister les dépendances avec 
-						<p><pre><code class="html" data-trim contenteditable>npm ls</code></pre></p>
+                      <p>On peut lister les dépendances avec </p>
+					  <pre><code class="html" data-trim contenteditable>npm ls</code></pre>
 					</section>
 
 					<!-- scripts -->
@@ -1497,7 +1496,7 @@ browserify js/main.js -o browserify-bundle.js -d
 						</code></pre>
 						<p>Puis importer le bundle dans le HTML</p>
 						<pre><code class="html" data-trim contenteditable>
-<script defer src="browserify-bundle.js"></script>
+&lt;script defer src="browserify-bundle.js">&lt;/script>
 						</code></pre>
 						<p><code><a href="https://github.com/substack/watchify" target="_blank">watchify</a></code>, l'équivalent temps réel</p>
 					</section>
