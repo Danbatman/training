@@ -845,21 +845,21 @@ git clone https://github.com/anthill/training.git
 
 					<section>
 						<h3>CSS</h3>
-						<p>Anatomie d'un élément :</p>
+						<p>Anatomie d'un élément (<em>box model</em>) :</p>
 						<img width="600" data-src="img/element_anatomy.png">
 					</section>
 
 					<section>
 						<h3>3 façons de définir un style :</h3>
 						<pre><code class="html" data-trim contenteditable>
-// dans l'élément
-<element style="..."></element>
+// dans une stylesheet
+<link rel="stylesheet" href="main.css">
 
 // dans un bloc style
 <style type="text/css"></style>
 
-// dans une stylesheet
-<link rel="stylesheet" href="main.css">
+// dans l'élément
+<element style="..."></element>
 						</code></pre>
 					</section>
 
@@ -884,8 +884,8 @@ div * {...}
 div p a {...}
 div.maClasse {...}
 div a#monId {...}
-ul > li {...} // all li directly child from ul
-div[class=”maClasse”] {...} // all div that have only this class
+ul > li {...} // all li directly children of ul
+div[class=”maClasse”] {...} // all div that only have this class
 div + span {...} // span that is adjacent to div
 a[class~=”plop”] {...} // all div that have at least this class
 						</code></pre>
@@ -918,13 +918,8 @@ p::after // add content inside the p after p's content
 					</section>
 
 					<section>
-						<h3>Poids des sélécteurs</h3>
-					</section>
-
-					<section>
 						<h3>display</h3>
-						<p>By default, block takes all the width it can independent of the content, whereas an inline will have a width that depend on the content.
-
+						<p>By default, <strong>block</strong> takes all the width it can independent of the content, whereas an <strong>inline</strong> will have a width that depend on the content.
 inline-block has both property.</p>
 					</section>
 
