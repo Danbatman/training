@@ -72,28 +72,26 @@
 
 					<section>
 						<h2>Programme</h2>
-							<ol>
-								<li>travailler à plusieurs (git/github)</li>
-								<li>les langages du web (html, css, javascript)</li>
-								<li>dataviz: tableau de bord de consommation d'eau (3 jours)</li>
-								<li>docker, déploiement ?</li>
-								<li>...</li>
-							</ol>
-						</p>
+						<ol>
+							<li>travailler à plusieurs (git/github)</li>
+							<li>les langages du web (html, css, javascript)</li>
+							<li>dataviz: tableau de bord de consommation d'eau (3 jours)</li>
+							<li>docker, déploiement ?</li>
+							<li>...</li>
+						</ol>
 					</section>
 
 					<section>
 						<h2>Spirit</h2>
-							<ol>
-								<li>NOS outils sur VOS projets avec VOS data</li>
-								<li>on couvre large, vous hackez le reste</li>
-								<li>support</li>
-							</ol>
-						</p>
+						<ol>
+							<li>NOS outils sur VOS projets avec VOS data</li>
+							<li>on couvre large, vous hackez le reste</li>
+							<li>support</li>
+						</ol>
 					</section>
-
 				</section>
 
+              
 				<!-- git -->
 				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
 					<section>
@@ -104,7 +102,7 @@
 					<section>
 						<h2>Git / GitHub</h2>
 						<p>Git: gestionnaire de version (sur votre ordinateur)</p>
-						<p>GitHub: plateforme d'échange (sur le cloud)</p>
+						<p>GitHub: plateforme de collaboration (sur le cloud)</p>
 					</section>
 					<section>
 						<p>
@@ -181,7 +179,7 @@ touch testFile.txt
 						<p>après ce fichier crée, status donne:</p>
 						<pre><code class="hljs" data-trim contenteditable>
 Untracked files:
-(use "git add <file>..." to include in what will be committed)
+(use "git add &lt;file>..." to include in what will be committed)
 
 	testFile.txt
 						</code></pre>
@@ -196,7 +194,7 @@ git add testFile.txt
 						<p>indique a git qu'on veut le versioner</p>
 						<pre><code class="hljs" data-trim contenteditable>
 Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
+  (use "git rm --cached &lt;file>..." to unstage)
 
 	new file:   testFile.txt
 						</code></pre>
@@ -258,19 +256,19 @@ git log
 						</code></pre>
 						<pre><code class="hljs" data-trim contenteditable>
 commit 5bf345af8448979acd16ec07621561f8628211fa
-Author: vallettea <vallettea@gmail.com>
+Author: vallettea &lt;vallettea@gmail.com>
 Date:   Mon Jan 11 19:53:32 2016 +0100
 
     changed hello in bonjour
 
 commit 2dc24bc314fc92fcbf20261ef80ec203088044d9
-Author: vallettea <vallettea@gmail.com>
+Author: vallettea &lt;vallettea@gmail.com>
 Date:   Mon Jan 11 19:32:26 2016 +0100
 
     added hello to the file
 
 commit c04b81108300ebbe9d367d21c603ae9e3089d55e
-Author: vallettea <vallettea@gmail.com>
+Author: vallettea &lt;vallettea@gmail.com>
 Date:   Mon Jan 11 19:22:51 2016 +0100
 
     added empty file to project
@@ -415,8 +413,6 @@ git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --all
 							<li><a href="https://www.atlassian.com/pt/git/">autre bonne documentation</a></li>
 						</ul>
 					</section>
-
-
 				</section>
 
 
@@ -553,14 +549,14 @@ git clone https://github.com/anthill/training.git
 
 					<section>
 						<h1>HTML</h1>
-						<h3>structurer le contenu<h3>
+                        <h3>structurer le contenu</h3>
 					</section>
 
 					<section>
 						<h2>balise</h2>
 						<p>Les elements d'une page sont représenté par une balise :</p>
 						<pre><code class="html" data-trim contenteditable>
-<element attribut="valeur" ...>contenu</element>				
+&lt;element attribut="valeur" ...>contenu&lt;/element>				
 						</code></pre>
 						<p>Certains éléments sont solitaires d'autres s'associent.</p>
 					</section>
@@ -717,7 +713,6 @@ git clone https://github.com/anthill/training.git
 						    </tr>
 						  </tbody>
 						</table>
-						</code></pre>
 					</section>
 
 					<section>
@@ -791,7 +786,7 @@ git clone https://github.com/anthill/training.git
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong"><code>strong</code></a></li>
 							<li>
 								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i"><code>i</code></a>,
-								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b"><code>b</code></a></li>
+								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b"><code>b</code></a>
 							</li>
 							<li>
 								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small"><code>small</code></a>,
@@ -1094,7 +1089,7 @@ if (nom == "des chiots") {
 						</code></pre>
 						<p>les opérateurs logiques :</p>
 						<pre><code class="hsjs" data-trim contenteditable>
-if (nom === "toto" && prenom === "alex")
+if (nom === "toto" &amp;&amp; prenom === "alex")
 if (nom === "toto" || prenom === "alex")
 var permis = (age > 18) ? "oui" : "non";
 						</code></pre>
@@ -1452,8 +1447,8 @@ projet_Node/
 		grunt-devserver/
 	package.json			
 						</code></pre>
-						<p>On peut lister les dépendances avec 
-						<p><pre><code class="html" data-trim contenteditable>npm ls</code></pre></p>
+                      <p>On peut lister les dépendances avec </p>
+					  <pre><code class="html" data-trim contenteditable>npm ls</code></pre>
 					</section>
 
 					<!-- scripts -->
@@ -1501,7 +1496,7 @@ browserify js/main.js -o browserify-bundle.js -d
 						</code></pre>
 						<p>Puis importer le bundle dans le HTML</p>
 						<pre><code class="html" data-trim contenteditable>
-<script defer src="browserify-bundle.js"></script>
+&lt;script defer src="browserify-bundle.js">&lt;/script>
 						</code></pre>
 						<p><code><a href="https://github.com/substack/watchify" target="_blank">watchify</a></code>, l'équivalent temps réel</p>
 					</section>
