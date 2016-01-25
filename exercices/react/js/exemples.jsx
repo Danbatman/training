@@ -38,13 +38,13 @@ React.createElement('div', { // js
 
 /////////////////////////////////////////////
 
-<MonComposant myProp='myProp'> // jsx
+<MonComposant myProp={this.whatever}> // jsx
 	<h1>Exemple</h1>
 	Je suis un composant custom sous React
 </MonComposant>
 
 React.createElement('MonComposant', { // js
-		myProp: 'myProp'
+		myProp: this.whatever
 	},
 	React.createElement('h1', null, 'Exemple'),
 	'Je suis un composant custom sous React'
