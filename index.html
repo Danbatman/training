@@ -1508,8 +1508,113 @@ browserify js/main.js -o browserify-bundle.js -d
 
 				</section>
 
-				
+				<section data-transition="slide" data-background="#222" data-background-transition="zoom">
+					<section>
+						<h1><a href="https://facebook.github.io/react/"><img width="50%" src="https://upload.wikimedia.org/wikipedia/commons/5/57/React.js_logo.svg" alt="logo React">React</a></h1>
+						<h3>Building User Interfaces in JS</h3>
+					</section>
 
+					<section>
+						<h2>React</h2>
+						<p>Créé par Facebook en 2013</p>
+						<p>Utilisé par</p>
+						<ul>
+							<li>Facebook</li>
+							<li>Instagram</li>
+							<li>Netflix</li>
+							<li>Airbnb</li>
+							<li>...</li>
+						</ul>
+						<p>Existe en web et en natif</p>
+
+					</section>
+
+					<section>
+						<h3>Avantages</h3>
+
+						<ul>
+							<li>Architecture par composants</li>
+							<li>Flux de données unidirectionnel</li>
+							<li>Statelessness</li>
+							<li>Virtual DOM</li>
+						</ul>
+
+						<h3>Inconvénients</h3>
+
+					</section>
+
+					<section>
+						<h2>Virtual DOM</h2>
+
+						<ul>
+							<li>copie virtuelle du DOM en cache</li>
+							<li>compare quand les données changent</li>
+							<li>modifie seulement le nécessaire</li>
+						</ul>
+
+						<p>=> Rapidité</p>
+					</section>
+
+					<section>
+						<h2>Composants</h2>
+
+						<img width="600" src="./img/react_html.png">
+						<img width="600" src="./img/react_main.png">
+
+					</section>
+
+					<section>
+						<h3><a href="https://facebook.github.io/react/docs/displaying-data.html" target="_blank">JSX vs JS</a></h3>	
+
+						<img width="600" src="./img/js_jsx.png">
+
+					</section>
+
+					<section>
+						<h3>Construire un composant</h3>
+						<img width="600" src="./img/react_createClass.png">				
+					</section>
+
+					<section>
+						<h2>Data flow</h2>	
+						<q>Les données "descendent", les évènement "montent"</q>
+						<img width="600" style="background-color: white;" src="https://docs.google.com/drawings/d/1XGjAU1xi6KFDGevuBbSPf16qUGofj1uWWKnDyzQiZzg/pub?w=960&amp;h=720">
+					</section>
+			
+					<section>
+						<h2><a href="https://github.com/uberVU/react-guide/blob/master/props-vs-state.md" target="_blank">Props et State</a></h2>
+						<ul>
+							<li>Objets JS</li>
+							<li>Contiennent la donnée</li>
+							<li>Déterministes</li>
+							<li>Déclenchent <code>render()</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Props</h3>
+						<ul>
+							<li>Immutable</li>
+							<li>Est hérité des parents</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>State</h3>
+						<ul>
+							<li>Mutable</li>
+							<li>Doit être initialisé</li>
+							<li>Local au composant</li>
+						</ul>
+
+						<p>Il faut limiter les composants <code>state</code>ful</p>
+
+					</section>
+
+					<section>
+						<h3>Exemple</h3>	
+						<img width="600" style="background-color: white;" src="https://docs.google.com/drawings/d/1T-hCP1lua4-i0yd3zIzDe-2iRAzDbQ7kbnpQSZBT97g/pub?w=960&amp;h=720">
+					</section>
 
 			</div>
 
