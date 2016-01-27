@@ -48,6 +48,10 @@ module.exports = React.createClass({
 			return state.sexeSet.has(nameInfo.sexe);
 		});
 
+		filteredNameInfos.sort(function (a, b) {
+			return parseFloat(b.nombre) - parseFloat(a.nombre);
+		});
+
 		return (
 			<div className='name-list'>
 				<ul>
