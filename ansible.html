@@ -1,0 +1,135 @@
+				<!-- ansible -->
+				<section data-transition="slide" data-background="#5BBDBF" data-background-transition="zoom">
+					<section>
+						<h1>Ansible</h1>
+						<h3>Déployer et maintenir</h3>
+					</section>
+
+					<section>
+						<h3>Ansible</h3>
+						<p>Ansible permet de déployer automatiquement une infrastructure complexe sur plusieurs machines. Parmi ses avantages :</p>
+						<ul>
+							<li>light: tout fonctionne par ssh</li>
+							<li>communauté: de nombreux modules</li>
+							<li>tower: permet de scaler en délégant des tâche dans une équipe</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Installation</h3>
+						<p>Sur le master : </p>
+						http://docs.ansible.com/ansible/intro_installation.html
+						<p>Sur les slaves : </p>
+						<ul>
+							<li>id_rsa.pub du master dans authorized_hosts</li>
+							<li>install necessary deps</li>
+						</ul>	
+						<pre><code class="bash" data-trim contenteditable>
+apt-get update
+apt-get install -y python python-pip
+						</code></pre>
+
+					</section>
+
+					<section>
+						<h3>Inventory</h3>
+						<p>Chaque machine doit apparaitre dans le fichier hosts et elle peut apparatenir a différents groupes :</p>
+						<pre><code class="bash" data-trim contenteditable>
+[webservers]
+139.162.203.160
+
+[dbservers]
+139.162.203.160
+						</code></pre>
+						<p>vous pouvez dès lors ustiliser des commandes par groupes avec des partterns: <code>ansible webservers -m service -a "name=httpd state=restarted"</code></p>
+					</section>
+
+					<section>
+						<h3>ping</h3>
+						<pre><code class="bash" data-trim contenteditable>
+ansible all -vvvv -m ping -u root
+ansible all -u root -a "ls /"
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>ad-hoc command</h3>
+						<p>Pour executer des commandes :</p>
+						<pre><code class="bash" data-trim contenteditable>
+ansible all -u root -a "ls /"
+ansible dbservers -m copy -a "src=/etc/hosts dest=/tmp/hosts" #copy a file
+ansible webservers -m service -a "name=httpd state=started" #ensure a service is running 
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Playbooks</h3>
+						<p>Un playbook est la recette de fabrication d'une infrastructre ou d'un service :</p>
+						<pre><code class="yml" data-trim contenteditable>
+playbook
+	play
+		task
+		task
+	play
+		task
+
+handler
+						</code></pre>
+						et s'execute avec la commande
+
+						<pre><code class="bash" data-trim contenteditable>
+ansible-playbook playbook.yml -f 10
+						</code></pre>
+
+					</section>
+
+					<section>
+						<h3>Playbooks</h3>
+						<p>Ce qui donne :</p>
+						<pre><code class="yml" data-trim contenteditable>
+---
+- hosts: webservers
+  remote_user: root
+
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: name=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+
+- hosts: databases
+  remote_user: root
+
+  tasks:
+  - name: ensure postgresql is at the latest version
+    yum: name=postgresql state=latest
+  - name: ensure that postgresql is started
+    service: name=postgresql state=running
+						</code></pre>
+					</section>
+
+
+
+					<section>
+						<h3>Task</h3>
+						<p>Une task décrit une opération :</p>
+						<pre><code class="hsjs" data-trim contenteditable>
+- name: install httpd
+  apt: name=httpd-2.0 state present
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h3>Roles</h3>
+						<p>Les playbooks peuvent s'imbriquer pour constituer une infra par building blocks :</p>
+						<p>Roles can be shared and you can find roles to install given infrastructure easily on ansible Galaxy</p>
+					</section>
+
+					<section>
+						ansible-galaxy install azavea.postgis
+					</section>
+
+
+
+				</section>
