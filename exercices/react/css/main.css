@@ -1,0 +1,100 @@
+body {
+	margin: 0; padding: 0;
+}
+
+h1 {
+	width: 90vw;
+    text-align: center;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0; padding: 0;
+}
+
+li {
+	margin: 0; padding: 0;
+}
+
+.button {
+	cursor: pointer;
+}
+
+.selected {
+	color: black;
+}
+
+.name {
+	
+}
+
+.F {
+	background-color: pink;
+}
+
+.M {
+	background-color: #9CAEEA;
+}
+
+.nameList{
+	width: 90vw;
+}
+
+.nameList ul:first-child {
+	display: flex; flex-direction: row; justify-content: center;
+}
+
+.nameList ul:first-child li {
+	margin: 0 .5rem; padding: 1rem;
+	background-color: #DDD;
+}
+
+.nameList ul:first-child li.F.selected {
+	background-color: pink;
+}
+
+.nameList ul:first-child li.M.selected {
+	background-color: #9CAEEA;
+}
+
+.nameList ul:nth-child(2){
+	padding-left: 5rem; margin-top: 2rem;
+}
+
+.nameList ul:nth-child(2) li{
+	position: relative; padding: .1rem 0;
+}
+
+.nameList ul:nth-child(2) li div {
+	display: inline-block;
+}
+
+.nameList ul:nth-child(2) li div:nth-child(2){
+	position: absolute; left: 5rem;
+}
+
+.yearList {
+	height: 100vh; width: 10vw;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.yearList ul {
+	display: flex; height: 100%; flex-direction: column; justify-content: space-around;
+}
+
+.yearList li {
+	display: flex; flex-direction: column; flex-grow: 1; justify-content: center; width: 100%;
+	color: #999; text-align: center;
+	background-color: #DDD;
+}
+
+.yearList li:hover {
+	color: black;
+}
+
+.yearList li.selected {
+	color: white;
+	background-color: purple;
+}

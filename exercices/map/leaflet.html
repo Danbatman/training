@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <style>
+      .map {
+      	position: absolute; top: 0; bottom: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <title>Leaflet example</title>
+  </head>
+  <body>
+    <h2>My Map</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+
+	 	// var points = [
+		// 	{
+		// 		"name": "place1",
+		// 		"lon": -0.5309455,
+		// 		"lat": 47.2655527
+		// 	},
+		// 	{
+		// 		"name": "place2",
+		// 		"lon": -0.7610869,
+		// 		"lat": 44.600453
+		// 	},
+		// 	{
+		// 		"name": "place3",
+		// 		"lon": -0.5877654,
+		// 		"lat": 44.807913
+		// 	}
+		// ];
+
+
+		var token = 'pk.eyJ1IjoiYW50aGlsbCIsImEiOiJUR0FoRGdJIn0.ZygA4KxIt8hJ1LAvPPMHwQ';
+
+		// Create Leaflet Map
+		var map = L.map('map', {
+		    layers: [
+		        L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + token, {
+		            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		        })
+		    ],
+		    attributionControl: false,
+		    center: [44.8397, -0.5730],
+		    zoom: 12
+		});
+
+		var position = [44.84, -0.5742];
+
+		// Create circle marker
+		var circleMarker = L.circleMarker(position)
+
+		// Create icon for marker
+		var myIcon = L.divIcon({
+            iconSize: [60, 15],
+            iconAnchor: [-12, 8],
+            html: 'mon point'
+        });
+
+        // Create marker
+        var marker = L.marker(
+            position,
+            {
+                icon: myIcon
+            }
+        );
+
+        // Add markers to map
+		circleMarker.addTo(map);
+        marker.addTo(map);
+	
+
+    </script>
+  </body>
+</html>

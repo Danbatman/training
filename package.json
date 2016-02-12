@@ -1,0 +1,38 @@
+{
+  "name": "training",
+  "version": "1.0.0",
+  "description": "Slides from our training session.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:jsx": "babel exercices/react/js/**/*.jsx --out-dir . --watch",
+    "build:jsx": "babel exercices/react/js/**/*.jsx --out-dir .",
+    "watch:bundle": "watchify exercices/react/js/main.js -o exercices/react/browserify-bundle.js -d -v",
+    "build:bundle": "browserify exercices/react/js/main.js -o exercices/react/browserify-bundle.js -d -v",
+    "watch": "npm-run-all --parallel 'watch:*'"
+  },
+  "babel": {
+    "presets": [
+      "react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthill/training.git"
+  },
+  "author": "ants <contact@ants.builders> (http://ants.builders/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anthill/training/issues"
+  },
+  "homepage": "https://github.com/anthill/training",
+  "dependencies": {
+    "moment": "^2.11.1",
+    "npm-run-all": "^1.5.0",
+    "react": "^0.14.6"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.3.13",
+    "babel-cli": "^6.4.5"
+  }
+}
