@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+  <meta charset="utf-8">
+  <style>
+  #tree{
+    position: relative;
+    left: 0px;
+  } 
+  .node circle {
+    fill: #fff;
+    stroke: #585858;
+    stroke-width: 2px;
+  }
+  .node text {
+    font: 12px sans-serif;
+  }
+
+  </style>
+  <body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.15/d3.min.js"></script>
+  <div id="tree"></div>
+
+  <script>
+  d3.json("iris_tree.json", function(error, treeData) {
+    var marginTree = {top: 20, right: 120, bottom: 20, left: 200},
+      width = 1200 - marginTree.right - marginTree.left,
+      height = 800 - marginTree.top - marginTree.bottom;
+    var i = 0,
+      duration = 750,
+      root;
+    var tree = d3.layout.tree()
+      .size([height, width]);
+    var root = treeData[0],
+      nodes = tree.nodes(root),
+      links = tree.links(nodes);
+    var diagonal = d3.svg.diagonal()
+      .projection(function(d) { return [d.y, d.x]; });
+    var svg3 = d3.select("#tree").append("svg")
+      .attr("width", width + marginTree.right + marginTree.left)
+      .attr("height", height + marginTree.top + marginTree.bottom)
+      .append("g")
+      .attr("transform", "translate(" + marginTree.left + "," + marginTree.top + ")");
+    var link = svg3.selectAll(".link")
+      .data(links)
+      .enter()
+      .append("g")
+      .attr("class", "link");
+    link.append("path")
+      .attr("fill", "none")
+      .attr("stroke", "#BDBDBD")
+      .attr("stroke-width", "3px")
+      .attr("d", diagonal);
+    link.append("text")
+      .style("font", "normal 9px Arial")
+      .attr("transform", function(d) {
+          return "translate(" +
+              ((d.source.y + d.target.y)/2) + "," + 
+              ((d.source.x + d.target.x)/2) + ")";
+      })   
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      .text(function(d) {
+          if(d.source.children[0] === d.target) {
+            return "true";
+          } else {
+            return "false";
+          }
+      });
+  var node = svg3.selectAll(".node")
+      .data(nodes)
+      .enter()
+      .append("g")
+      .attr("class", "node")
+      .attr("transform", function (d) {
+          return "translate(" + d.y + "," + d.x + ")";
+      });
+  node.append("circle")
+      .attr("r", 4.5)
+      .style("fill", function(d) { 
+          if (d.children) {
+            return "#fff";
+          } else {
+            if(d.value[0] > d.value[1]){
+              return "#74DF00";
+            } else {
+              return "#FE2E2E";
+            }
+          }
+        });
+  node.append("text")
+      .attr("dx", function (d) {
+          return d.children ? -8 : 8;
+      })
+      .attr("dy", 3)
+      .style("text-anchor", function (d) {
+          return d.children ? "end" : "start";
+      })
+      .text(function(d) { return d.rule ? d.rule : String(d.value).replace(',', ' / '); });
+  })
+  </script>
+</body>
+

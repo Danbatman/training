@@ -855,13 +855,13 @@ git clone https://github.com/anthill/training.git
 						<h3>3 façons de définir un style :</h3>
 						<pre><code class="html" data-trim contenteditable>
 // dans l'élément
-<element style="..."></element>
+&lt;element style="..."></element>
 
 // dans un bloc style
-<style type="text/css"></style>
+&lt;style type="text/css"></style>
 
 // dans une stylesheet
-<link rel="stylesheet" href="main.css">
+&lt;link rel="stylesheet" href="main.css">
 						</code></pre>
 					</section>
 
@@ -1623,12 +1623,784 @@ browserify js/main.js -o browserify-bundle.js -d
 						
 					</section>
 
+				</section>
+
+
+
+				<!-- data science -->
+				<section data-transition="slide" data-background="#fff" data-background-transition="zoom">
+					<section>
+						<h1>Data-Science</a></h1>
+						<h3>tour d'horizon</h3>
+					</section>
+
+					<section>
+						<h2>Data-Science</h2>
+						<ul>
+							<li>statistiques avancées (classification, régression...)</li>
+							<li>réseaux de neurones, deeplearning</li>
+							<li>théorie des graphes</li>
+						</ul>
+						<hr>
+						<ul>
+							<li>optimisation (algorithmes génétiques, recuits, TSP ...)</li>
+							<li>computer vision</li>
+							<li>traitement du signal</li>
+						</ul>
+
+					</section>
+
+					<section>
+						<h2>Objectif:</h2>
+						<p>Trouver le bon algorithme pour la bonne tâche.</p>
+						<p>Peu de maths...</p>
+					</section>
+
+					<section>
+						<h2>Apprentissage supervisé</h2>
+						<ol>
+							<li>régression</li>
+							<li>classification</li>
+						</ol>
+					</section>
+
+					<section>
+						<h2>Apprentissage non-supervisé</h2>
+						<ol>
+							<li>clustering</li>
+							<li>page-rank</li>
+							<li>réseaux de Kohonen</li>
+							<li>...</li>
+						</ol>
+					</section>
+
+					<!-- pandas -->
+					<section>
+						<h1>Pandas</h1>
+						<h3>Manipulation des données tabulaires en python</h3>
+						<a href="http://pandas.pydata.org/pandas-docs/version/0.17.1/10min.html">Doc</a>
+					</section>
+
+					<section>
+						<h2>Pandas</h2>
+						<p>Avantages :</p>
+						<ul>
+							<li>importation des données</li>
+							<li>typage</li>
+							<li>gestion des NaN</li>
+							<li>gestion des dates et intervalles</li>
+							<li>intégration avec Numpy et Scikit</li>
+							<li>intégration avec spark</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Import dans ipython</h3>
+						<pre><code class="python" data-trim contenteditable>
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Series</h3>
+						<pre><code class="python" data-trim contenteditable>
+s = pd.Series([7, 'Einstein', 3.14, -1789710578, 'Dumas'])
+
+# adding index
+s = pd.Series([7, 'Einstein', 3.14, -1789710578, 'Dumas'],
+              index=['A', 'Z', 'C', 'Y', 'E'])
+
+#from a dictionnary
+d = {'Chicago': 1000, 'New York': 1300, 'Portland': 900, 'San Francisco': 1100,
+     'Austin': 450, 'Boston': None}
+cities = pd.Series(d)
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Series: séléction</h3>
+						<pre><code class="python" data-trim contenteditable>
+cities['Chicago']
+cities[['Chicago', 'Portland', 'San Francisco']]
+cities[cities < 1000]
+
+# changing value
+cities['Chicago'] = 1400
+
+# applying function
+np.sqrt(cities)
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Series: opérations</h3>
+						<pre><code class="python" data-trim contenteditable>
+# changing value
+cities['Chicago'] = 1400
+
+# applying function
+np.sqrt(cities)
+
+cities.notnull()
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Séries temporelles</h3>
+						<pre><code class="python" data-trim contenteditable>
+rng = pd.date_range('1/1/2012', periods=100, freq='S')
+ts = pd.Series(np.random.randint(0, 500, len(rng)), index=rng)
+ts.resample('5Min', how='sum')
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Dataframe:</h3>
+						<pre><code class="python" data-trim contenteditable>
+data = {'year': [2010, 2011, 2012, 2011, 2012, 2010, 2011, 2012],
+        'team': ['Bears', 'Bears', 'Bears', 'Packers', 'Packers', 'Lions', 'Lions', 'Lions'],
+        'wins': [11, 8, 10, 15, 11, 6, 10, 4],
+        'losses': [5, 8, 6, 1, 5, 10, 6, 12]}
+football = pd.DataFrame(data, columns=['year', 'team', 'wins', 'losses'])
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Dataframe: input/output</h3>
+						<pre><code class="python" data-trim contenteditable>
+# read
+pd.read_csv('file.csv', sep=',')
+pd.read_json('test.json')
+pd.read_excel('foo.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
+data = pd.read_sql_table('data', conn)
+# write
+df.to_hdf('foo.h5','df')
+                         names=cols)
+						</code></pre>
+					</section>
+
+
+					
+
+					<!-- scikit-learn -->
+					<section>
+						<h1>Scikit-learn</h1>
+						<h3>Machine Learning library</h3>
+						<a href="http://scikit-learn.org/stable/">Doc</a>
+					</section>
+
+					<section>
+						<h2>Scikit-learn</h2>
+						<p>Avantages :</p>
+						<ul>
+							<li>mise en place</li>
+							<li>combine bien avec l'écosystème python</li>
+							<li>beacoup d'exemples</li>
+							<li>API quasi-unique pour tous les algos</li>
+							<li>la plus grande communauté</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Scikit API</h3>
+						<pre><code class="python" data-trim contenteditable>
+from sklearn import datasets, linear_model
+
+# Create linear regression object
+regr = linear_model.LinearRegression()
+
+# Train the model using the training sets
+regr.fit(diabetes_X_train, diabetes_y_train)
+
+# Make predictions
+regr.predict(diabetes_X_test) 
+						</code></pre>
+					</section>
+
+					<!-- classification -->
+					<section>
+						<h1>Classification</h1>
+						<ul>
+							<li>Comparaisons des méthodes</li>
+							<li>Evaluer une classification</li>
+							<li>Classer des spam</li>
+						</ul>
+					</section>
+
+					<!-- naive bayse -->
+					<section>
+						<h2>Classification: naive bayse</h2>
+						<p><strong>Idée: </strong>on suppose "naïvement" que toutes les features sont statistiquement indépendantes.</p>
+						<p>Théorème de Bayes (<a href="https://www.countbayesie.com/blog/2015/2/18/bayes-theorem-with-lego">explication</a>):</p>
+						\[ P(y\mid x_1, x_2, ..., x_n) = \frac{P(y)P(x_1, x_2, ..., x_n\mid y)}{P(x_1, x_2, ..., x_n)} \]
+					</section>
+
+					<section>
+						<h2>Classification: naive bayse</h2>
+						<p>Avec l'indépendance des features: </p>
+						\[ P(y\mid x_1, x_2, ..., x_n) = \frac{P(y)\prod_{i=1}^{n}P(x_i\mid y)}{P(x_1, x_2, ..., x_n)} \]
+						<p>ce qui permet de calculer la classe la plus probable, après avoir choisis une distribution pour \( P(x_i\mid y) \)</p>
+					</section>
+
+					<section>
+						<h2>Classification: naive bayse</h2>
+						<p>Exemple avec une gaussienne:</p>
+						\[ P(x_i\mid y) = \frac{1}{\sqrt{2\pi \sigma_y^2}}exp\left(-\frac{(x_i-\mu_y)^2}{2\sigma_y^2} \right) \]
+					</section>
+
+					<section>
+						<h2>Classification: naive bayse</h2>
+						<p>Avantages :</p> 
+						<ul>
+							<li>converge rapidement (nécessite peu de data)</li>
+							<li>simplicité</li>
+							<li>rapide</li>
+							<li>fonctionne très bien <a href="http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf">(même sans indépendance des features)</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Classification: naive bayse</h2>
+						Exemple avec Iris:
+						<pre><code class="python" data-trim contenteditable>
+from sklearn import datasets
+iris = datasets.load_iris()
+from sklearn.naive_bayes import GaussianNB
+gnb = GaussianNB()
+y_pred = gnb.fit(iris.data, iris.target).predict(iris.data)
+print("Number of mislabeled points out of a total %d points : %d" % (iris.data.shape[0],(iris.target != y_pred).sum())) 
+						</code></pre>
+						Seuls 6 des points sur 150 sont mal labélisés.
+					</section>
+
+					<!-- logistic regression -->
+					<section>
+						<h2>Classification: régression logistique</h2>
+						<iframe class="stretch" data-src="https://plot.ly/~beingAnts/54/logistic-regression-1-feature/"></iframe>
+					</section>
+
+					<section>
+						<h2>Classification: régression logistique</h2>
+						\[ y = \frac{1}{1+e^{-z}} \]
+						\[ z = \alpha_0 + \sum_{i=0}^{N} \alpha_i x_i \]
+						où la fonction logit permet de faire entre les résulats d'un modèle linéaire dans l'intervalle [0,1]
+					</section>
+
+					
+					<section>
+						<h2>Classification: régression logistique</h2>
+						<p>Advantages :</p>
+						<ul>
+							<li>régularisation contre overfitting</li>
+							<li>features correllées ou pas</li>
+							<li>stream</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Classification: régression de Poisson</h2>
+						\[ y = Poisson(\lambda) \]
+						\[ \lambda = exp(\alpha_0 + \sum_{i=0}^{N} \alpha_i x_i) \]
+						pour modéliser des nombres entiers positifs croissants (nombre de visites sur un site etc)
+					</section>
+
+					<!-- svm -->
+					<section>
+						<h2>Classification: svm</h2>
+						<iframe class="stretch" data-src="https://plot.ly/~beingAnts/52/linear-svm-decision-boundary/"></iframe>
+						"Maximise la distance geometrique entre la "decision boundary" et les samples"
+					</section>
+
+					<section>
+						<h2>Classification: svm</h2>
+						<a href="https://www.youtube.com/watch?v=3liCbRZPrZA"><img src="img/ml/svm.jpg"></a>
+					</section>
+
+
+					<section>
+						<h2>Classification: svm</h2>
+						<p>Avantages :</p>
+						<ul>
+							<li>précision</li>
+							<li>quelques résulats théorique pour se protéger de l'overfitting</li>
+							<li>un bon choix de noyau permet de spérer des données complexes</li>
+						</ul>
+						<p>Problèmes :</p>
+						<ul>
+							<li>gourmand en mémoire</li>
+							<li>difficile à interpréter</li>
+							<li>difficile à tuner</li>
+						</ul>
+					</section>
+
+					<!-- decision tree -->
+					<section>
+						<h2>Classification: decision tree</h2>
+						\[ (x_1, y_1), (x_2, y_2), ...., (x_n, y_n) \]
+						<img class="stretch" src="img/ml/dt1.png">
+					</section>
+
+					<section>
+						<h2>Classification: decision tree</h2>
+						Premier split:
+						<img class="stretch" src="img/ml/dt2.png">
+					</section>
+
+					<section>
+						<h2>Classification: decision tree</h2>
+						Second split:
+						<img class="stretch" src="img/ml/dt3.png">
+					</section>
+
+					<section>
+						<h2>Classification: decision tree</h2>
+						Jusqu'à une condition d'arrêt :
+						<img class="stretch" src="img/ml/dt6.png">
+					</section>
+
+					<section>
+					<img style="width:700px;" src="img/ml/mermaid.png">
+					</section>
+
+					<section>
+						<h2>Classification: decision tree</h2>
+						<p><strong>Avantages</strong></p>
+						<ul>
+							<li>facile à interpréter</li>
+							<li>feature hétérogènes (categorical, continuous)</li>
+							<li>gère toute sorte de data</li>
+							<li>données manquantes</li>
+							<li>gère bien les features corréllées</li>
+						</ul>
+						<p><strong>Problèmes :</strong></p>
+						<ul>
+							<li>pas de stream</li>
+							<li>overfitting</li>
+						</ul>
+						<p>random forests gagnent souvent sur tout le monde, rapide et sclalable, sans paramètres.</p>
+
+					</section>
+
+
+
+
+					<section>
+						<h2>Résumé</h2>
+						<img src="http://www.yaksis.com/static/img/02/cows_and_wolves.png"/>
+					</section>
+
+
+					<section>
+						<h2>Evaluer une classification</h2>
+						<p><strong>Accuracy:</strong> à quel point la réponse est proche de la solution. Pensez à la cible avec des flêches et qu'on fait le décompte. Combien de prédictions sont de bonnes prédictions ?</p>
+						<p><strong>Précision:</strong> à quel point cette réponse est reproductible. Penser au tireur et non à la cible. Est-ce que le modèle est fiable ?</p>
+					</section>
+
+					<section>
+						<h2>Matrice de confusion</h2>
+						<p>Le <a href="http://archive.ics.uci.edu/ml/datasets/Breast+Cancer">dataset</a> sur le cancer du sein permet d'illustrer la gravité de l'évaluation d'un modèle.</p>
+						<ul>
+							<li>286 femmes qui ont subi un cancer du sein, 9 features </li>
+							<li>201 n'ont pas eu de récurrence </li>
+							<li>85 en ont eu</li>
+					</section>
+
+					<section>
+						<h2>Matrice de confusion</h2>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Positif (réel)</th>
+									<th>Négatif (réel)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>Positif (prédit)</strong></td>
+									<td>vrai positif</td>
+									<td>faux positif</td>
+								</tr>
+								<tr>
+									<td><strong>Négatif (prédit)</strong></td>
+									<td>faux negatif</td>
+									<td>vrai négatif</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h2>Matrice de confusion</h2>
+						Pour un modèle "jamais de récurrence" :
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Positif (réel)</th>
+									<th>Négatif (réel)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>Positif (prédit)</strong></td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td><strong>Négatif (prédit)</strong></td>
+									<td>85</td>
+									<td>201</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h2>Matrice de confusion</h2>
+						Pour un modèle "toujours une récurrence" :
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Positif (réel)</th>
+									<th>Négatif (réel)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>Positif (prédit)</strong></td>
+									<td>85</td>
+									<td>201</td>
+								</tr>
+								<tr>
+									<td><strong>Négatif (prédit)</strong></td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h2>Matrice de confusion</h2>
+						Pour un modèle plus évolué genre decision tree :
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Positif (réel)</th>
+									<th>Négatif (réel)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>Positif (prédit)</strong></td>
+									<td>10</td>
+									<td>13</td>
+								</tr>
+								<tr>
+									<td><strong>Négatif (prédit)</strong></td>
+									<td>75</td>
+									<td>188</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h2>Précision</h2>
+						<p>La robustesse du modèle (et c'est ça qui est important) se calcul par :</p>
+
+						\[\frac{nb\ vrais\ positifs}{nb\ vrais\ positifs + nb\ faux\ positifs}  \]
+
+						<br/>
+						<ul>
+						    <li>Precision "jamais de récurrence":  0/(0+0) = 0 (NaN)</li>
+						    <li>Precision "toujours récurrence":  85/(85+201) = 0.30</li>
+						    <li>Precision de l'arbre: 10/(10+13) = 0.43</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Sensibilité (recall)</h2>
+						<p>La complétude du modèle :</p>
+
+						\[\frac{nb\ vrais\ positifs}{nb\ vrais\ positifs + nb\ faux\ négatifs}  \]
+
+						<br/>
+						<ul>
+						    <li>Precision "jamais de récurrence":  0/(0+85) = 0</li>
+						    <li>Precision "toujours récurrence":  85/(85+0) = 1</li>
+						    <li>Precision de l'arbre: 10/(10+75) = 0.12</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>F1-score</h2>
+						<p>Equilibre entre précision et sensibilité :</p>
+
+						\[ 2\frac{precision \times recall}{precision+recall}  \]
+
+						<br/>
+						<ul>
+						    <li>Precision "jamais de récurrence":  0</li>
+						    <li>Precision "toujours récurrence":  0.46</li>
+						    <li>Precision de l'arbre: 10/(10+75) = 0.19</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Cas d'usage: iris </h2>
+						<img src="http://scikit-learn.org/stable/_images/plot_iris_0013.png">
+					</section>
+
+					<section>
+						<h2>Cas d'usage: iris </h2>
+						<pre><code class="python" data-trim contenteditable>
+from sklearn.datasets import load_iris
+from sklearn import tree
+iris = load_iris()
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(iris.data, iris.target)
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(iris.target, clf.predict(iris.data))
+
+# exercice
+from treeExport import makeJsonTree
+makeJsonTree(clf, iris.feature_names)
+						</code></pre>
+					</section>
+
+					<section>
+						<img style="width:900px" src="img/ml/iris.png">
+					</section>
+
+
+					<!-- regressions -->
+					<section>
+						<h1>Régressions</h1>
+						<ul>
+							<li>Comparaisons des méthodes</li>
+							<li>Evaluer une régression</li>
+							<li>Regression tree</li>
+							<li>Prédire le prix d'une maison</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Régression linaire</h2>
+						Avec l'hypothèse <strong>\( h(x) = \theta_0 + \theta_1 x\)</strong> et la fonction de coût:
+						<p></p>
+						\[ J(\theta_0, \theta_1) = \frac{1}{2m}\sum_{i=1}^{m}\left(h_\theta(x^{(i)})-y^{(i)}\right)^2 \]
+						<p></p>
+						il suffit d'utiliser la méthode du gradient.
+					</section>
+
+					<section>
+						<h2>Régression: regression tree</h2>
+						Même principe que pour la classification :
+						<img class="stretch" src="img/ml/dt7.png">
+					</section>
+
+					<section>
+						<img style="width: 500px" src="img/ml/mermaid2.png">
+					</section>
+
+					<section>
+						<h2>Bagging</h2>
+						<p>Consiste à diviser le learning set en plusieurs sous-ensembles et crée un modèle par sous ensemble. Le résultat est obtenu par moyenne pour la régression et par vote pour la classification.</p>
+						<ul>
+							<li>scalable</li>
+							<li>réduit le risque d'overfitting</li>
+							<li>augmente quasi-systématiquement la stabilité</li>
+						</ul>
+						<p>Exemple: random forest: beaucoup d'arbres overfittés</p>
+					</section>
+
+					<section>
+						<h2>Boosting</h2>
+						<p>Consiste à mettre en série des modèles qui apprennent de l'erreur résiduelle des précédents.</p>
+						<ul>
+							<li>pas scalable</li>
+							<li>super-précis pour des dynamiques complexes</li>
+							<li>risque d'overfitting</li>
+						</ul>
+						<p>Exemple: adaboost: beaucoup d'arbres underfittés</p>
+					</section>
+
+					
+
+					<section>
+						<h2>Evaluer une régression</h2>
+						\[ RMSE = \sqrt{\frac{\sum_i^n (p_i-x_i)^2}{n}} \]
+						<br/>
+						\[ RSE = \frac{\sum_i^n (p_i-x_i)^2}{\sum_i^n (\bar x-x_i)^2} \]
+					</section>
+
+					<section>
+						<h2>Evaluer une régression</h2>
+						\[ MAE = \frac{\sum_i^n |p_i-x_i|}{n} \]
+						<br/>
+						\[ RAE = \frac{\sum_i^n |p_i-x_i|}{\sum_i^n |\bar x-x_i|} \]
+					</section>
+
+					<section>
+						<h2>Overfitting</h2>
+						<iframe class="stretch" data-src="https://plot.ly/~beingAnts/56/"></iframe>
+						<p><a href="http://hunch.net/?p=22">Diagnostiquer son problème.</a></p>
+					</section>
+
+					<section>
+						<h3>Cas d'usage: prédire le prix d'une maison</h3>
+						<pre><code class="python" data-trim contenteditable>
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+from sklearn.cross_validation import train_test_split
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.ensemble.partial_dependence import partial_dependence
+from sklearn.datasets.california_housing import fetch_california_housing
+
+cal_housing = fetch_california_housing()
+
+# separation 80/20 train-test
+X_train, X_test, y_train, y_test = train_test_split(cal_housing.data,
+                                                    cal_housing.target,
+                                                    test_size=0.2,
+                                                    random_state=1)
+names = cal_housing.feature_names
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h3>Cas d'usage: prédire le prix d'une maison</h3>
+						<pre><code class="python" data-trim contenteditable>
+import pandas as pd
+X_df = pd.DataFrame(data=X_train, columns=names)
+X_df['LogMedHouseVal'] = y_train
+_ = X_df.hist(column=['Latitude', 'Longitude', 'MedInc', 'LogMedHouseVal'])
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Cas d'usage: prédire le prix d'une maison</h3>
+						<img src="">
+					</section>					
+
+					<section>
+						<h3>Cas d'usage: prédire le prix d'une maison</h3>
+						<pre><code class="python" data-trim contenteditable>
+clf = GradientBoostingRegressor(n_estimators=3000, max_depth=6,
+                                learning_rate=0.04, loss='huber',
+                                random_state=1)
+clf.fit(X_train, y_train)
+
+from sklearn.metrics import mean_absolute_error
+
+mae = mean_absolute_error(y_test, est.predict(X_test))
+print('MAE: %.4f' % mae)
+						</code></pre>
+					</section>
+					
+
+					<section>
+						<h3>Cas d'usage: prédire le prix d'une maison</h3>
+						<pre><code class="python" data-trim contenteditable>
+# importances des features
+indices = np.argsort(est.feature_importances_)
+# plot as bar chart
+plt.barh(np.arange(len(names)), est.feature_importances_[indices])
+plt.yticks(np.arange(len(names)) + 0.25, np.array(names)[indices])
+_ = plt.xlabel('Relative importance')
+						</code></pre>
+					</section>
+
+
+					<!-- PCA -->
+					<section>
+						<h2>Réduction de dimensionalité (PCA)</h2>
+						<p>Il s'agit de trouver une nouvelle base de vecteurs propres qui élimine les corrélations.</p>
+						<ul>
+							<li>visualisation</li>
+							<li>simplification du dataset</li>
+							<li>moins facile à interpréter</li>
+						</ul>
+						<p><a href="http://setosa.io/ev/principal-component-analysis/">Excellent lien.</a></p>
+					</section>
+
+					<!-- anomaly detection -->
+					<section>
+						<h2>Détéction d'anomalies</h2>
+						<p>Lorsqu'une prédiction d'un modèle diffère significativement de la réalité, il y une anomalie.</p>
+						<p><a href="https://blog.twitter.com/2015/introducing-practical-and-robust-anomaly-detection-in-a-time-series">Détection d'anomalies chez twitter.</a></p>
+					</section>
+
+					<!-- clustering -->
+					<section>
+						<h2>Clustering</h2>
+						<p>Il s'agit de regrouper des points par des règles de proximité géométriques dans un espace à N dimensions.</p>
+						<img style="width:700px" src="http://scikit-learn.org/stable/_images/plot_cluster_comparison_0011.png">
+						<p><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html">Excellent post décrivant la prédicition via k-means clustering.</a></p>
+					</section>
+
+					<section data-background="http://scikit-learn.org/stable/_static/ml_map.png">
+					</section>
+
+					<!-- NLP -->
+					<section>
+						<h2>NLP</h2>
+						http://fotiad.is/blog/sentiment-analysis-comparison/
+					</section>
+
+					<!-- Imagerie -->
+					<section>
+						<h2>Imagerie</h2>
+						http://www.pyimagesearch.com/2014/12/01/complete-guide-building-image-search-engine-python-opencv/
+					</section>
+
+					<!-- Deep-learning -->
+					<section>
+						<h2>Deep-learning</h2>
+						http://danielnouri.org/notes/2014/12/17/using-convolutional-neural-nets-to-detect-facial-keypoints-tutorial/
+						https://www.countbayesie.com/blog/2015/2/18/bayes-theorem-with-lego
+					</section>
+
+					
+					
+
+
+					<section>
+						<h2>Ressources</h2>
+						<ul>
+							<li><a href="https://www.coursera.org/learn/machine-learning/">Stanford ML course (good for begginers especially for logistic regression)</a></li>
+							<li><a href="http://www.amazon.fr/The-Elements-Statistical-Learning-Prediction/dp/0387848576">The Elements of Statistical Learning: Data Mining, Inference, and Prediction (Hastie)</a></li>
+							<li><a href="https://github.com/soulmachine/machine-learning-cheat-sheet">machine leanringCheat Sheet</a></li>
+							<li><a href="http://blog.echen.me/2011/04/27/choosing-a-machine-learning-classifier/">Choosing a classifier</a></li>
+							<li><a href="https://www.youtube.com/playlist?list=PLD0F06AA0D2E8FFBA">Mathematical Monk tutorial</a></li>
+							<li><a href="http://nbviewer.jupyter.org/urls/s3.amazonaws.com/datarobotblog/notebooks/gbm-tutorial.ipynb">Boosting</a></li>
+							<li><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html">Bias-variance</a></li>
+						</ul>
+
+					</section>
+
+					
+
+				</section>
+
 			</div>
 
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+<!-- 		<script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/0.5.8/mermaid.css">
+		<script>mermaid.initialize({startOnLoad:true});</script> -->
 
 		<style type="text/css">
 			.reveal section img {
@@ -1653,11 +2425,10 @@ browserify js/main.js -o browserify-bundle.js -d
 				// Optional reveal.js plugins
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: '/plugin/math/math.js', async: true }
 				]
 			});
 
