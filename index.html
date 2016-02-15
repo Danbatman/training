@@ -1910,7 +1910,7 @@ print("Number of mislabeled points out of a total %d points : %d" % (iris.data.s
 					<section>
 						<h2>Classification: svm</h2>
 						<iframe class="stretch" data-src="https://plot.ly/~beingAnts/52/linear-svm-decision-boundary/"></iframe>
-						"Maximise la distance geometrique entre la "decision boundary" et les samples"
+						Maximise la distance geometrique entre la "decision boundary" et les samples.
 					</section>
 
 					<section>
@@ -1970,9 +1970,9 @@ print("Number of mislabeled points out of a total %d points : %d" % (iris.data.s
 						<ul>
 							<li>facile à interpréter</li>
 							<li>feature hétérogènes (categorical, continuous)</li>
-							<li>gère toute sorte de data</li>
+							<li>modèle exportable</li>
 							<li>données manquantes</li>
-							<li>gère bien les features corréllées</li>
+							<li>gère bien les features correllées</li>
 						</ul>
 						<p><strong>Problèmes :</strong></p>
 						<ul>
@@ -2154,11 +2154,6 @@ print("Number of mislabeled points out of a total %d points : %d" % (iris.data.s
 
 					<section>
 						<h2>Cas d'usage: iris </h2>
-						<img src="http://scikit-learn.org/stable/_images/plot_iris_0013.png">
-					</section>
-
-					<section>
-						<h2>Cas d'usage: iris </h2>
 						<pre><code class="python" data-trim contenteditable>
 from sklearn.datasets import load_iris
 from sklearn import tree
@@ -2172,6 +2167,11 @@ cm = confusion_matrix(iris.target, clf.predict(iris.data))
 from treeExport import makeJsonTree
 makeJsonTree(clf, iris.feature_names)
 						</code></pre>
+					</section>
+
+					<section>
+						<h2>Cas d'usage: iris </h2>
+						<img src="http://scikit-learn.org/stable/_images/plot_iris_0013.png">
 					</section>
 
 					<section>
@@ -2192,7 +2192,7 @@ makeJsonTree(clf, iris.feature_names)
 
 					<section>
 						<h2>Régression linaire</h2>
-						Avec l'hypothèse <strong>\( h(x) = \theta_0 + \theta_1 x\)</strong> et la fonction de coût:
+						Avec l'hypothèse <strong>\( h(x) = \theta_0 + \theta_1 x \)</strong> et la fonction de coût:
 						<p></p>
 						\[ J(\theta_0, \theta_1) = \frac{1}{2m}\sum_{i=1}^{m}\left(h_\theta(x^{(i)})-y^{(i)}\right)^2 \]
 						<p></p>
@@ -2248,6 +2248,18 @@ makeJsonTree(clf, iris.feature_names)
 					</section>
 
 					<section>
+						<h2>Evaluer une régression</h2>
+						\[ pearson = \frac{\sum_i^n (x_i-\bar x)(p_i-\bar p)}{\sqrt{\sum_i^n (x_i-\bar x)^2} \sqrt{\sum_i^n (p_i-\bar p)^2}} \]
+					</section>
+
+					<section>
+						<h2>Pearson</h2>
+						<img class="stretch" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Correlation_examples2.svg/1000px-Correlation_examples2.svg.png">
+					</section>
+
+					
+
+					<section>
 						<h2>Overfitting</h2>
 						<iframe class="stretch" data-src="https://plot.ly/~beingAnts/56/"></iframe>
 						<p><a href="http://hunch.net/?p=22">Diagnostiquer son problème.</a></p>
@@ -2266,6 +2278,8 @@ from sklearn.ensemble.partial_dependence import partial_dependence
 from sklearn.datasets.california_housing import fetch_california_housing
 
 cal_housing = fetch_california_housing()
+# if pb 
+# https://raw.githubusercontent.com/scikit-learn/scikit-learn/3daab8a99862674514735a3caadd45cc542b43c1/sklearn/datasets/california_housing.py
 
 # separation 80/20 train-test
 X_train, X_test, y_train, y_test = train_test_split(cal_housing.data,
@@ -2283,27 +2297,32 @@ names = cal_housing.feature_names
 import pandas as pd
 X_df = pd.DataFrame(data=X_train, columns=names)
 X_df['LogMedHouseVal'] = y_train
-_ = X_df.hist(column=['Latitude', 'Longitude', 'MedInc', 'LogMedHouseVal'])
+X_df.hist(column=['Latitude', 'Longitude', 'MedInc', 'LogMedHouseVal'])
+plt.show()
 						</code></pre>
 					</section>
 
 					<section>
 						<h3>Cas d'usage: prédire le prix d'une maison</h3>
-						<img src="">
+						<img style="width:700px" src="img/ml/cal.png">
 					</section>					
 
 					<section>
 						<h3>Cas d'usage: prédire le prix d'une maison</h3>
 						<pre><code class="python" data-trim contenteditable>
-clf = GradientBoostingRegressor(n_estimators=3000, max_depth=6,
+clf = GradientBoostingRegressor(n_estimators=300, max_depth=6,
                                 learning_rate=0.04, loss='huber',
                                 random_state=1)
 clf.fit(X_train, y_train)
 
 from sklearn.metrics import mean_absolute_error
+from scipy.stats import pearsonr
 
-mae = mean_absolute_error(y_test, est.predict(X_test))
+y_pred = clf.predict(X_test)
+mae = mean_absolute_error(y_test, y_pred)
 print('MAE: %.4f' % mae)
+pea = pearsonr(y_test, y_pred)
+print('PEA: %.4f' % pea[])
 						</code></pre>
 					</section>
 					
@@ -2312,11 +2331,12 @@ print('MAE: %.4f' % mae)
 						<h3>Cas d'usage: prédire le prix d'une maison</h3>
 						<pre><code class="python" data-trim contenteditable>
 # importances des features
-indices = np.argsort(est.feature_importances_)
-# plot as bar chart
-plt.barh(np.arange(len(names)), est.feature_importances_[indices])
+indices = np.argsort(clf.feature_importances_)
+
+plt.barh(np.arange(len(names)), clf.feature_importances_[indices])
 plt.yticks(np.arange(len(names)) + 0.25, np.array(names)[indices])
-_ = plt.xlabel('Relative importance')
+plt.xlabel('Relative importance')
+plt.show()
 						</code></pre>
 					</section>
 
@@ -2352,23 +2372,23 @@ _ = plt.xlabel('Relative importance')
 					</section>
 
 					<!-- NLP -->
-					<section>
+<!-- 					<section>
 						<h2>NLP</h2>
 						http://fotiad.is/blog/sentiment-analysis-comparison/
-					</section>
+					</section> -->
 
 					<!-- Imagerie -->
-					<section>
+<!-- 					<section>
 						<h2>Imagerie</h2>
 						http://www.pyimagesearch.com/2014/12/01/complete-guide-building-image-search-engine-python-opencv/
-					</section>
+					</section> -->
 
 					<!-- Deep-learning -->
-					<section>
+<!-- 					<section>
 						<h2>Deep-learning</h2>
 						http://danielnouri.org/notes/2014/12/17/using-convolutional-neural-nets-to-detect-facial-keypoints-tutorial/
 						https://www.countbayesie.com/blog/2015/2/18/bayes-theorem-with-lego
-					</section>
+					</section> -->
 
 					
 					
