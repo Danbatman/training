@@ -1017,15 +1017,25 @@ site/
 						</ul>
 						
 					</section>
+                    
+                    <section>
+						<h3>Comparaison de valeur</h3>
+                        <ul>
+                            <li>Toujours utiliser === et !==
+                            <li>== "presque égal"
+                            <li>=== "strictement égal"
+                        </ul>
+					</section>
 
 					<section>
 						<h3>Number</h3>
+                        <p>Un seul type de nombre (pas de distinction int/float/double)</p>
 						<pre><code class="hsjs" data-trim contenteditable>
 parseInt("123", 10); // 123
 
 parseInt("010");  //  8
 
-isNaN(NaN); // true
+Number.isNaN(NaN); // true
 
 1 / 0; // Infinity
 
