@@ -8,6 +8,11 @@
 - html, css (day 2)
 - javascript (day 2)
 
+## Building with prez
+
+`npm install prez -g`
+`prez --theme black -w`
+
 ## Licence
 
 All the content is licenced CC-BY Ants
