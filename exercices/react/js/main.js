@@ -21,7 +21,7 @@ var cleanData = data.map(function (item) {
 
 var years = [];
 
-dateSet.forEach(function (date) {
+yearSet.forEach(function (date) {
 	years.push(date);
 });
 
