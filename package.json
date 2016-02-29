@@ -9,7 +9,8 @@
     "build:jsx": "babel exercices/react/js/**/*.jsx --out-dir .",
     "watch:bundle": "watchify exercices/react/js/main.js -o exercices/react/browserify-bundle.js -d -v",
     "build:bundle": "browserify exercices/react/js/main.js -o exercices/react/browserify-bundle.js -d -v",
-    "watch": "npm-run-all --parallel watch:*"
+    "watch": "npm-run-all --parallel watch:*",
+    "serve": "node_modules/http-server/bin/http-server"
   },
   "babel": {
     "presets": [
