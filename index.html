@@ -584,17 +584,14 @@ git clone https://github.com/anthill/training.git
 					<section>
 						<h2>balises de méta-données</h2>
 						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/doctype"><code>!doctype</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head"><code>head</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title"><code>title</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>link</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta"><code>meta</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style"><code>style</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>script</code></a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"><code>noscript</code></a></li>
 						</ul>
 					</section>
-
 
 					<section>
 						<h2>web sémantique</h2>
@@ -628,7 +625,6 @@ git clone https://github.com/anthill/training.git
 					<section>
 						<h2>balises de section</h2>
 						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"><code>body</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article"><code>article</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav"><code>nav</code></a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside"><code>aside</code></a></li>
@@ -814,21 +810,23 @@ git clone https://github.com/anthill/training.git
 					<section>
 						<h3>Attributs globaux :</h3>
 						<ul>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/accesskey"><code>accesskey</code></a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/class"><code>class</code></a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/style"><code>style</code></a></li>
-							<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/hidden"><code>hidden</code></a></li>
-							<li>...</li>
+							
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id"><code>id</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class"><code>class</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden"><code>hidden</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style"><code>style</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title"><code>title</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*"><code>data-*</code></a></li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Attributs spécifiques :</h3>
 						<ul>
-							<li><a href="https://developer.mozilla.org/fr/docs/XUL/Attribute/src"><code>src</code></a></li>
-							<li><a href="https://developer.mozilla.org/fr/docs/XUL/Attribute/alt"><code>alt</code></a></li>
-							<li><a href="https://developer.mozilla.org/fr/docs/XUL/Attribute/href"><code>href</code></a></li>
-							<li><a href="https://developer.mozilla.org/fr/docs/XUL/Attribute/target"><code>target</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#Attributes"><code>src</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#Attributes"><code>alt</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>href</code></a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>target</code></a></li>
 							<li>...</li>
 						</ul>
 					</section>
@@ -847,7 +845,7 @@ git clone https://github.com/anthill/training.git
 
 					<section>
 						<h3>CSS</h3>
-						<p>Anatomie d'un élément :</p>
+						<p>Anatomie d'un élément (<em>box model</em>) :</p>
 						<img width="600" data-src="img/element_anatomy.png">
 					</section>
 
@@ -856,10 +854,8 @@ git clone https://github.com/anthill/training.git
 						<pre><code class="html" data-trim contenteditable>
 // dans l'élément
 &lt;element style="..."></element>
-
 // dans un bloc style
 &lt;style type="text/css"></style>
-
 // dans une stylesheet
 &lt;link rel="stylesheet" href="main.css">
 						</code></pre>
@@ -886,8 +882,8 @@ div * {...}
 div p a {...}
 div.maClasse {...}
 div a#monId {...}
-ul > li {...} // all li directly child from ul
-div[class=”maClasse”] {...} // all div that have only this class
+ul > li {...} // all li directly children of ul
+div[class=”maClasse”] {...} // all div that only have this class
 div + span {...} // span that is adjacent to div
 a[class~=”plop”] {...} // all div that have at least this class
 						</code></pre>
@@ -920,14 +916,10 @@ p::after // add content inside the p after p's content
 					</section>
 
 					<section>
-						<h3>Poids des sélécteurs</h3>
-					</section>
-
-					<section>
 						<h3>display</h3>
-						<p>By default, block takes all the width it can independent of the content, whereas an inline will have a width that depend on the content.
-
-inline-block has both property.</p>
+						<p>Les éléments avec <strong>display: block</strong> forcent les éléménts suivant à aller à la ligne suivante. On peut choisir leur <em>width</em> et <em>height</em></p>
+						<p>Les éléments avec <strong>display: inline</strong> subissent le flux du texte (et vont à la ligne quand il n'y a plus de place sur la ligne actuelle)</p>
+						<p>Les éléments avec <strong>display: inline-block</strong> agissent comme des inline à l'extérieur et block à l'intérieur</p>
 					</section>
 
 					<section>
@@ -954,7 +946,7 @@ site/
 
 					<section>
 						<h3>Responsive web design</h3>
-						<img width="800" data-src="http://cdn2.hubspot.net/hubfs/477550/Blog/mars_2015/Content_is_like_water.png?t=1443798056161">
+						<img width="800" data-src="http://www.stephaniewalter.fr/wp-content/uploads/content-is-like-water-12402.jpg">
 					</section>
 
 					<section>
@@ -1023,15 +1015,25 @@ site/
 						</ul>
 						
 					</section>
+                    
+                    <section>
+						<h3>Comparaison de valeur</h3>
+                        <ul>
+                            <li>Toujours utiliser === et !==
+                            <li>== "presque égal"
+                            <li>=== "strictement égal"
+                        </ul>
+					</section>
 
 					<section>
 						<h3>Number</h3>
+                        <p>Un seul type de nombre (pas de distinction int/float/double)</p>
 						<pre><code class="hsjs" data-trim contenteditable>
 parseInt("123", 10); // 123
 
 parseInt("010");  //  8
 
-isNaN(NaN); // true
+Number.isNaN(NaN); // true
 
 1 / 0; // Infinity
 

@@ -9,3 +9,4 @@ js/reveal.min.js
 
 **/*-bundle.js
 exercices/**/*-bundle.js
+build/

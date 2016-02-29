@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:jsx": "babel exercices/react/js/**/*.jsx --out-dir . --watch",
+    "watch-exo:jsx": "babel exercices/react/js/**/*.jsx --out-dir . --watch",
     "build:jsx": "babel exercices/react/js/**/*.jsx --out-dir .",
-    "watch:bundle": "watchify exercices/react/js/main.js -o exercices/react/browserify-bundle.js -d -v",
+    "watch-exo:bundle": "watchify exercices/react/js/main.js -o exercices/react/browserify-bundle.js -d -v",
     "build:bundle": "browserify exercices/react/js/main.js -o exercices/react/browserify-bundle.js -d -v",
-    "watch": "npm-run-all --parallel watch:*",
-    "serve": "node_modules/http-server/bin/http-server"
+    "watch-exo": "npm-run-all --parallel watch-exo:*",
+    "watch": "node_modules/prez/bin/prez.js --theme black -w",
+    "serve": "node_modules/http-server/bin/http-server",
+    "write": "npm-run-all --parallel watch serve"
   },
   "babel": {
     "presets": [
@@ -30,8 +32,10 @@
   "dependencies": {
     "browserify": "^13.0.0",
     "classnames": "^2.2.3",
+    "http-server": "^0.9.0",
     "moment": "^2.11.1",
     "npm-run-all": "^1.5.0",
+    "prez": "^4.6.0",
     "react": "^0.14.6"
   },
   "devDependencies": {
