@@ -10,8 +10,7 @@
 
 ## Building with prez
 
-`npm install prez -g`
-`prez --theme black -w`
+`npm run write`
 
 ### Wishes
 
