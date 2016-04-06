@@ -489,6 +489,34 @@ docker logs
 
 					<section>
 						<h3>Docker</h3>
+						<p>Docker-hub</p>
+						<pre><code class="shell" data-trim contenteditable>
+docker pull nodejs
+docker pull ants/predictionio
+
+docker push ants/myimage
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h3>Docker</h3>
+						<p>Docker volumes</p>
+						<pre><code class="shell" data-trim contenteditable>
+docker -v /emplacement/machine:/emplacement/dans/le/container
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Docker</h3>
+						<p>Docker interactif</p>
+						<pre><code class="shell" data-trim contenteditable>
+docker run -ti node
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Docker</h3>
 						<p>Docker file</p>
 						<pre><code class="yml" data-trim contenteditable>
 # Basic python setup for science application (numpy, ploting etc)
@@ -507,24 +535,119 @@ RUN apt-get update && apt-get install -y \
 						</code></pre>
 					</section>
 
+					<!-- programtion fonctionnel -->
 					<section>
-						<h3>Docker</h3>
-						<p>Docker-hub</p>
-						<pre><code class="shell" data-trim contenteditable>
-docker pull nodejs
-docker pull ants/predictionio
-
-docker push ants/myimage
-						</code></pre>
+						<h3>Type de programation</h3>
+						<ul>
+							<li>imperative</li>
+							<li>fonctionnelle</li>
+							<li>objet</li>
+							<li>event driven / asynchrone</li>
+							<li>concurrente</li>
+						</ul>
+						<p>Des exemples <a href="https://en.wikipedia.org/wiki/Comparison_of_programming_languages">ici</a>.</p>
 					</section>
 
+					<!-- comparatif langages -->
 					<section>
-						<h3>Docker</h3>
-						<p>Docker volumes</p>
-						<pre><code class="shell" data-trim contenteditable>
-docker -v /emplacement/machine:/emplacement/dans/le/container
-						</code></pre>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>func</th>
+									<th>OO</th>
+									<th>ED</th>
+									<th>concurrent</th>
+									<th>simplicity</th>
+									<th>communauté</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>nodejs</strong></td>
+									<td>+</td>
+									<td>+</td>
+									<td>+++</td>
+									<td>-</td>
+									<td>+++</td>
+									<td>+++</td>
+								</tr>
+								<tr>
+									<td><strong>python</strong></td>
+									<td>+</td>
+									<td>++</td>
+									<td>+</td>
+									<td>+</td>
+									<td>+++</td>
+									<td>+++</td>
+								</tr>
+								<tr>
+									<td><strong>C++</strong></td>
+									<td>+</td>
+									<td>++</td>
+									<td>-</td>
+									<td>+</td>
+									<td>-</td>
+									<td>+++</td>
+								</tr>
+								<tr>
+									<td><strong>C#</strong></td>
+									<td>+</td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>++</td>
+									<td>++</td>
+								</tr>
+								<tr>
+									<td><strong>Julia</strong></td>
+									<td>+++</td>
+									<td>++</td>
+									<td>+</td>
+									<td>++</td>
+									<td>+</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td><strong>Java</strong></td>
+									<td>++</td>
+									<td>++</td>
+									<td>+</td>
+									<td>+</td>
+									<td>-</td>
+									<td>+++</td>
+								</tr>
+								<tr>
+									<td><strong>Scala</strong></td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>+</td>
+									<td>+</td>
+								</tr>
+								<tr>
+									<td><strong>Go</strong></td>
+									<td>+++</td>
+									<td>++</td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>++</td>
+									<td>+</td>
+								</tr>
+								<tr>
+									<td><strong>Rust</strong></td>
+									<td>+++</td>
+									<td>++</td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>+++</td>
+									<td>-</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
+					
 
 					<!-- scala -->
 					<section>
@@ -596,7 +719,7 @@ docker run -it -p 8088:8088 -p 8042:8042 -v $PWD:/data sequenceiq/spark:1.6.0 ba
 					<section>
 						<h3>Spark</h3>
 						<pre><code class="shell" data-trim contenteditable>
-val textFile = sc.textFile("README.md")
+val textFile = sc.textFile("example.csv")
 val name2col = textFile.first().split(";").zipWithIndex.map({case (value,index) => (value -> index)}).toMap
 
 textFile
@@ -615,6 +738,73 @@ textFile
     .saveAsTextFile(output)
 						</code></pre>
 					</section>
+
+					<section>
+						<h3>Spark</h3>
+						<p>vaut pour ses libs</p>
+						<ul>
+							<li><a href="https://spark.apache.org/docs/latest/mllib-guide.html">spark-ml</a></li>
+							<li><a href="https://spark.apache.org/docs/latest/graphx-programming-guide.html">graphx</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Graphx</h3>
+						<p>Exemple de calcul du pageRank sur un grand graph</p>
+					</section>
+
+					<section>
+						<h3>PageRank</h3>
+						<p>Classement des noeuds où un marcheur aléatoire est le plus susceptible de passer.</p>
+						<a href="https://bebffd479efdabe8c274b02b19ae9140ad412589.googledrive.com/host/0B2GQktu-wcTiaWw5OFVqT1k3bDA/">illustration</a>
+					</section>
+
+					<section>
+						<h3>Akka</h3>
+						<p>programmation en acteurs: une boite au lettre et un automate</p>
+						<ul>
+							<li>concurrence</li>
+							<li>asynchronicité</li>
+							<li>fault-tolerance</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Base de donnée graph (noSQL)</h3>
+						<p>Permet de représenter des données qui ne sont pas intrinsèquement tabulaires</p>
+						<ul>
+							<li>Neo4j</li>
+							<li><a href="http://s3.thinkaurelius.com/docs/titan/1.0.0/getting-started.html">TitanDb</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>TitanDb</h3>
+						<pre><code class="shell" data-trim contenteditable>
+docker run -ti lulumialu/titandb bash
+graph = TitanFactory.open('conf/titan-berkeleydb-es.properties')
+GraphOfTheGodsFactory.load(graph)
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Prediction.io</h3>
+						<p>API de prediction</p>
+						<img class="stretch" src="https://docs.prediction.io/images/overview-multiengines-b703caac.png">
+					</section>
+
+					<section>
+						<h3>Prediction.io</h3>
+						<p>DASE</p>
+						<ul>
+							<li>Data / preparator</li>
+							<li>Algorithme</li>
+							<li>Serving<li>
+							<li>Evaluation</li>
+						</ul>
+						<a href="https://docs.prediction.io/demo/textclassification/">Good tutorial</a>
+					</section>
+
 
 				</section>
 
