@@ -1,0 +1,28 @@
+---
+# This playbook sets up the app
+
+- name: Clone training
+  git: repo=https://github.com/anthill/training.git
+       dest=/root/{{service_name}}
+       version={{branch}}
+
+- name: Add app to nginx
+  template: src=nginx.template dest=/etc/nginx/sites-enabled/{{address}}
+
+- name: restart nginx 
+  command: nginx -s reload
+
+- name: Install app dependencies
+  command: bash -c '. ~/.nvm/nvm.sh; npm install' chdir=/root/{{service_name}}/exercices/api_nodejs
+
+- name: Install app service
+  template: src=service.template dest=/lib/systemd/system/{{service_name}}.service
+
+- name: restart systemctl
+  command: systemctl daemon-reload
+
+- name: reinstall app
+  service: name={{service_name}} enabled=yes
+
+- name: restart app
+  service: name={{service_name}} state=restarted

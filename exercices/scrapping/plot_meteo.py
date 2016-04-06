@@ -2,7 +2,7 @@ import pandas
 import datetime
 import pylab as plt
 
-data = pandas.read_json("../../data/meteo.json", orient="records")
+data = pandas.read_json("meteo.json", orient="records")
 
 def mkDate(row):
 	return datetime.datetime(int(row["year"]), int(row["month"]), int(row["day"]), int(row["hour"]))

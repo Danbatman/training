@@ -83,3 +83,8 @@ plt.xlabel('Relative importance')
 plt.show()
 
 
+@app.route('/prediction/', features)
+def give_prediction(features):
+    data = predictor.predict(features)
+    return jsonify(result=data)
+

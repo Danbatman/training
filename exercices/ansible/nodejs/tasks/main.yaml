@@ -1,0 +1,33 @@
+---
+# This playbook sets up firewall, nginx, nvm, ssl certs
+
+- name: Allow http through firewall
+  ufw: proto=tcp port=80 rule=allow
+
+- name: Allow https through firewall
+  ufw: proto=tcp port=443 rule=allow
+
+- name: Install nginx 
+  apt: name=nginx state=present
+
+- name: Start nginx
+  service: name=nginx state=started
+
+- name: restart nginx 
+  command: nginx -s reload
+
+- name: Install nvm
+  become: yes
+  become_user: "{{ nvm_user }}"
+  shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+
+- name: Source nvm in ~/.profile
+  become: yes
+  become_user: "{{ nvm_user }}"
+  lineinfile: >
+    dest=~/.profile
+    line="source ~/.nvm/nvm.sh"
+
+- name: Install {{ node_version }}
+  command: bash -c '. ~/.nvm/nvm.sh; nvm install {{ node_version }}'
+

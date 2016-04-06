@@ -1,0 +1,11 @@
+[Service]
+ExecStart=/bin/bash -c ". ~/.nvm/nvm.sh; cd /root/{{service_name}}/exercices/api_nodejs/; nvm use; node server.js"
+Environment="VIRTUAL_PORT={{port}}"
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier={{service_name}}
+User=root
+
+[Install]
+WantedBy=multi-user.target

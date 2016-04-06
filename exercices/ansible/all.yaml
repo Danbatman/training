@@ -1,0 +1,33 @@
+---
+# This playbook deploys all the example services
+
+- name: apply common configuration to all nodes (tooling)
+  hosts: all
+  remote_user: root
+  roles:
+    - common
+  tags: common
+
+- name: nodejs env
+  hosts: lyre
+  remote_user: root
+  vars:
+    nvm_user: "root"
+    node_version: '4.2.4'
+  roles:
+    - nodejs
+  tags: nodejs
+
+- name: app
+  hosts: lyre
+  remote_user: root
+  vars:
+    service_name: app
+    port: 9000
+    branch: gh-pages
+    address: "lyre.ants.builders"
+    nvm_user: "root"
+    node_version: '4.2.4'
+  roles:
+    - app
+  tags: app

@@ -91,8 +91,8 @@ def parse(day, month, year):
     #     return pandas.DataFrame(columns=['windchill', 'humidex', 'visibility', 'pressure', 'precipitation', 'temperature', 'hour', 'gust', 'humidity', 'nebulosity', 'wind'])
 
 
-startdate = date(2013,12,31)
-enddate = date(2014,4,1)
+startdate = date(2014,1,1)
+enddate = date(2014,3,1)
 delta = enddate - startdate
 days = [startdate + td(days=i) for i in range(delta.days + 1)]
 
@@ -107,7 +107,8 @@ for mydate in days:
     print len(final)
 
 
-final.to_json("../../data/meteo.json", orient="records")
+final.to_json("meteo.json", orient="records")
 
+final.to_csv("meteo.csv")
 
 

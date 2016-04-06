@@ -14,5 +14,13 @@ def show_user_profile(username):
     ]
     return jsonify(result=list)
 
+@app.route('/prediction/<username>')
+def show_user_profile(username):
+    list = [
+        {'param': 'foo', 'val': 2},
+        {'param': 'bar', 'val': 10}
+    ]
+    return jsonify(result=list)
+
 if __name__ == "__main__":
     app.run()

@@ -3,12 +3,6 @@
 var fs = require('fs');
 var dump = require('utils').dump;
 
-var adverts = [];
-var links = [];
-var page = 0;
-var numberOfLinks;
-var currentLink = 0;
-var titles = [];
 
 var casper = require('casper').create({
     pageSettings: {
@@ -50,12 +44,10 @@ casper.then(function(){
     });
 })
 
-
 casper.then(function(){
     var value = this.evaluate(getValue);
     dump(value);
 });
-
 
 function getValue() {
     var tables = document.querySelectorAll('table[id="tableau"]');
