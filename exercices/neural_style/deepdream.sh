@@ -1,0 +1,1 @@
+docker run -i -t -e INPUT=turner.jpg -e ITER=1 -e SCALE=0.10 -e MODEL='inception_3b/5x5_reduce' -v /Users/vallettea/Desktop:/data herval/deepdream
