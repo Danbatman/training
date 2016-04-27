@@ -1,0 +1,71 @@
+---
+# This playbook deploys cuda
+
+- name: update package libs
+  apt: update_cache=yes
+
+- name: upgrade dist 
+  apt: upgrade=dist
+
+- name: install basic stuff
+  apt: name={{item}} state=present
+  with_items:
+    - gcc
+    - g++
+    - gfortran
+    - build-essential
+    - git
+    - wget
+    - linux-image-generic
+    - libopenblas-dev
+    - python-dev
+    - python-pip
+    - python-nose
+    - python-numpy
+    - python-scipy
+    - cmake
+
+- name: install lapack blas
+  apt: name={{item}} state=present
+  with_items:
+    - liblapack-dev
+    - libblas-dev
+
+- name: download nvidia drivers
+  get_url: url=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5-18_amd64.deb dest=/root/cuda.deb validate_certs=False
+ 
+- name: install nvidia drivers
+  command: dpkg -i /root/cuda.deb
+
+- name: need to update_cache
+  apt: update_cache=yes
+
+- name: upgrade dist 
+  apt: upgrade=dist
+
+- name: install protobuf related
+  apt: name={{item}} state=present
+  with_items:
+    - protobuf-compiler
+    - libboost-all-dev
+    - libleveldb-dev
+    - hdf5-tools
+    - libhdf5-serial-dev
+    - libopencv-core-dev
+    - libopencv-highgui-dev
+    - libsnappy-dev
+    - libsnappy1
+    - libatlas-base-dev
+    - libstdc++6-4.8-dbg
+    - libgoogle-glog0
+    - libgoogle-glog-dev
+    - libgflags-dev
+    - liblmdb-dev   
+    - opencl-headers
+
+- name: install kernel headers
+  apt: name=linux-image-extra-`uname -r` linux-headers-`uname -r` linux-image-`uname -r` state=installed
+
+- name: install cuda
+  apt: name=cuda state=present
+
